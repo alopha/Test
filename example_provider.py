@@ -1,0 +1,41 @@
+from typing import Any
+import requests
+
+from dify_plugin import ToolProvider
+from dify_plugin.errors.tool import ToolProviderCredentialValidationError
+
+class YourProvider(ToolProvider):
+    def _validate_credentials(self, credentials: dict[str, Any]) -> None:
+        try:
+            # Check if api_key is provided in credentials
+            if "api_key" not in credentials or not credentials.get("api_key"):
+                raise ToolProviderCredentialValidationError("API key is required.")
+            
+            # Try to authenticate with your service using a simple test
+            try:
+                api_key = credentials.get("api_key")
+                test_url = "https://your-service.com/api/test"
+                headers = {
+                    "Authorization": f"Bearer {api_key}",
+                    "Content-Type": "application/json"
+                }
+                
+                response = requests.get(test_url, headers=headers, timeout=10)
+                
+                if response.status_code == 200:
+                    data = response.json()
+                    if "error" in data:
+                        raise ToolProviderCredentialValidationError(f"Service error: {data['error']}")
+                    # If we get here, the API key is valid
+                elif response.status_code == 401:
+                    raise ToolProviderCredentialValidationError("Invalid API key. Please check your API key.")
+                else:
+                    raise ToolProviderCredentialValidationError(f"Service request failed with status code: {response.status_code}")
+                    
+            except requests.exceptions.RequestException as e:
+                raise ToolProviderCredentialValidationError(f"Failed to connect to service: {str(e)}")
+            except Exception as e:
+                raise ToolProviderCredentialValidationError(f"Error validating credentials: {str(e)}")
+                
+        except Exception as e:
+            raise ToolProviderCredentialValidationError(str(e)) 

@@ -1,0 +1,40 @@
+identity:
+  name: your_tool_name
+  author: your_name
+  label:
+    en_US: Your Tool Name
+    zh_Hans: 你的工具名称
+description:
+  human:
+    en_US: Description of what your tool does for humans
+    zh_Hans: 工具功能描述
+  llm: Detailed description of what your tool does for the LLM. This should explain when and how to use the tool, what it returns, and any important considerations.
+parameters:
+  - name: input_parameter
+    type: string
+    required: true
+    label:
+      en_US: Input Parameter
+      zh_Hans: 输入参数
+    human_description:
+      en_US: Description of the input parameter for humans
+      zh_Hans: 输入参数描述
+    llm_description: Detailed description of the input parameter for the LLM. Explain what this parameter should contain and any formatting requirements.
+    form: llm
+  - name: optional_parameter
+    type: number
+    required: false
+    default: 10
+    min: 1
+    max: 100
+    label:
+      en_US: Optional Parameter
+      zh_Hans: 可选参数
+    human_description:
+      en_US: Description of the optional parameter
+      zh_Hans: 可选参数描述
+    llm_description: Description of the optional parameter for the LLM.
+    form: llm
+extra:
+  python:
+    source: tools/your_tool.py 

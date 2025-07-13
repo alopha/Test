@@ -1,0 +1,58 @@
+identity:
+  name: baidu_search
+  author: alopha
+  label:
+    en_US: Baidu Search
+    zh_Hans: 百度搜索
+    pt_BR: Pesquisa Baidu
+    ja_JP: Baidu検索
+    zh_Hant: 百度搜索
+description:
+  human:
+    en_US: Search for information on Baidu using SerpAPI
+    zh_Hans: 使用 SerpAPI 在百度上搜索信息
+    pt_BR: Pesquisar informações no Baidu usando SerpAPI
+    ja_JP: SerpAPIを使用してBaiduで情報を検索
+    zh_Hant: 使用 SerpAPI 在百度上搜索信息
+  llm: Search for information on Baidu using SerpAPI service. Returns search results including organic results, featured snippets, and answer boxes. Use this tool when you need to find current information, news, or general knowledge from Baidu search engine.
+parameters:
+  - name: query
+    type: string
+    required: true
+    label:
+      en_US: Search Query
+      zh_Hans: 搜索查询
+      pt_BR: Consulta de Pesquisa
+      ja_JP: 検索クエリ
+      zh_Hant: 搜索查詢
+    human_description:
+      en_US: Enter your search query for Baidu
+      zh_Hans: 输入您的百度搜索查询
+      pt_BR: Digite sua consulta de pesquisa para o Baidu
+      ja_JP: Baiduの検索クエリを入力してください
+      zh_Hant: 輸入您的百度搜索查詢
+    llm_description: The search query to perform on Baidu. This should be a clear, specific search term or phrase that describes what you want to find.
+    form: llm
+  - name: num_results
+    type: number
+    required: false
+    default: 10
+    min: 1
+    max: 100
+    label:
+      en_US: Number of Results
+      zh_Hans: 结果数量
+      pt_BR: Número de Resultados
+      ja_JP: 結果数
+      zh_Hant: 結果數量
+    human_description:
+      en_US: Number of search results to return (1-100)
+      zh_Hans: 要返回的搜索结果数量 (1-100)
+      pt_BR: Número de resultados de pesquisa a retornar (1-100)
+      ja_JP: 返す検索結果の数 (1-100)
+      zh_Hant: 要返回的搜索結果數量 (1-100)
+    llm_description: The number of search results to return. Default is 10, maximum is 100. Use a smaller number for focused results or a larger number for comprehensive search.
+    form: llm
+extra:
+  python:
+    source: tools/baidu_search.py 

@@ -1,0 +1,41 @@
+version: 0.0.1
+type: plugin
+author: your_name
+name: your_plugin_name
+label:
+  en_US: Your Plugin Name
+  zh_Hans: 你的插件名称
+description:
+  en_US: Description of what your plugin does
+  zh_Hans: 插件功能描述
+icon: icon.svg
+resource:
+  memory: 268435456
+  permission:
+    tool:
+      enabled: true
+    model:
+      enabled: true
+      llm: true
+      text_embedding: false
+      rerank: false
+      tts: false
+      speech2text: false
+      moderation: false
+    storage:
+      enabled: true
+      size: 1048576
+plugins:
+  tools:
+    - provider/your_provider.yaml
+meta:
+  version: 0.0.1
+  arch:
+    - amd64
+    - arm64
+  runner:
+    language: python
+    version: "3.12"
+    entrypoint: main
+created_at: 2025-01-20T10:00:00.000000+08:00
+privacy: PRIVACY.md 
