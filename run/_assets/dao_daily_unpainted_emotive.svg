@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background sky gradient -->
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0b1026"/>
+      <stop offset="55%" stop-color="#1b2640"/>
+      <stop offset="100%" stop-color="#f2c7a5"/>
+    </linearGradient>
+
+    <!-- Warm accent gradient for strokes -->
+    <linearGradient id="ensoGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#ffd1a1"/>
+    </linearGradient>
+
+    <!-- Mountain mist gradient -->
+    <linearGradient id="mistGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c7d2fe" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#94a3b8" stop-opacity="0.08"/>
+    </linearGradient>
+
+    <!-- Noise/grain texture -->
+    <filter id="paperNoise" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="1" seed="7" result="noise"/>
+      <feColorMatrix in="noise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.05 0"/>
+    </filter>
+
+    <!-- Slight ink bleed / organic edges -->
+    <filter id="inkBleed" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="0.35" result="blur"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="3" seed="11" result="turb"/>
+      <feDisplacementMap in="blur" in2="turb" scale="3" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+
+    <!-- Soft glow (for moon) -->
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="glow"/>
+      <feMerge>
+        <feMergeNode in="glow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Steam blur -->
+    <filter id="steamBlur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.2"/>
+    </filter>
+
+    <style><![CDATA[
+      .hanTitle { font-family: 'STKaiti', 'KaiTi', 'Kaiti SC', 'Noto Serif SC', 'Songti SC', 'LXGW WenKai', serif; font-weight: 500; }
+      .hanSub { font-family: 'STKaiti', 'KaiTi', 'Kaiti SC', 'Noto Serif SC', 'Songti SC', 'LXGW WenKai', serif; font-weight: 400; }
+    ]]></style>
+  </defs>
+
+  <!-- Background sky -->
+  <rect x="0" y="0" width="1200" height="800" fill="url(#skyGrad)"/>
+
+  <!-- Subtle paper grain overlay -->
+  <rect x="0" y="0" width="1200" height="800" filter="url(#paperNoise)"/>
+
+  <!-- Moon -->
+  <g opacity="0.9">
+    <circle cx="980" cy="120" r="36" fill="#fffdfa" filter="url(#softGlow)"/>
+    <circle cx="980" cy="120" r="28" fill="#fff3e8" opacity="0.7"/>
+  </g>
+
+  <!-- Distant birds (simple brush shapes) -->
+  <g fill="none" stroke="#f8fafc" stroke-width="2.5" stroke-linecap="round" opacity="0.5" filter="url(#inkBleed)">
+    <path d="M1020 190 C1030 182, 1042 182, 1054 190"/>
+    <path d="M1060 210 C1070 202, 1082 202, 1094 210"/>
+    <path d="M980 210 C990 202, 1002 202, 1014 210"/>
+  </g>
+
+  <!-- Layered mountains -->
+  <g>
+    <path d="M0 540 C 180 500, 360 560, 600 540 C 820 520, 1000 560, 1200 540 L 1200 800 L 0 800 Z"
+          fill="url(#mistGrad)" opacity="0.55"/>
+    <path d="M0 590 C 200 560, 360 630, 600 600 C 860 570, 1040 640, 1200 610 L 1200 800 L 0 800 Z"
+          fill="#0b132b" opacity="0.25"/>
+    <path d="M0 640 C 220 620, 380 680, 600 660 C 860 640, 1060 690, 1200 670 L 1200 800 L 0 800 Z"
+          fill="#0f172a" opacity="0.35"/>
+  </g>
+
+  <!-- Enso (open circle) as the unpainted/origin -->
+  <g transform="translate(0,10)">
+    <path d="M 600 420 m -170 0 a 170 170 0 1 0 330 0 a 170 170 0 1 0 -330 0"
+          fill="none" stroke="url(#ensoGrad)" stroke-width="16" stroke-linecap="round"
+          stroke-dasharray="540 120" opacity="0.9" filter="url(#inkBleed)"/>
+  </g>
+
+  <!-- Footsteps leading from daily life into the circle (日用入道) -->
+  <g fill="#fffdf7" opacity="0.85" filter="url(#inkBleed)">
+    <ellipse cx="360" cy="560" rx="10" ry="6" transform="rotate(-12 360 560)"/>
+    <ellipse cx="388" cy="542" rx="9" ry="5" transform="rotate(-10 388 542)" opacity="0.8"/>
+    <ellipse cx="418" cy="526" rx="8.5" ry="4.8" transform="rotate(-8 418 526)" opacity="0.75"/>
+    <ellipse cx="448" cy="510" rx="8" ry="4.5" transform="rotate(-6 448 510)" opacity="0.7"/>
+    <ellipse cx="478" cy="496" rx="7.6" ry="4.2" transform="rotate(-4 478 496)" opacity="0.68"/>
+    <ellipse cx="510" cy="484" rx="7.2" ry="4.0" transform="rotate(-2 510 484)" opacity="0.66"/>
+    <ellipse cx="542" cy="474" rx="7.2" ry="4.0" opacity="0.64"/>
+  </g>
+
+  <!-- Teacup with rising steam (日用常行) -->
+  <g transform="translate(180,560)">
+    <path d="M 0 0 C 40 0, 120 0, 160 0 C 158 24, 142 40, 80 42 C 18 40, 2 24, 0 0 Z" fill="#fffaf0" opacity="0.9" filter="url(#inkBleed)"/>
+    <path d="M 22 -4 C 78 -12, 120 -10, 138 -4" stroke="#fde68a" stroke-width="3" fill="none" opacity="0.8"/>
+    <path d="M 38 -28 C 24 -52, 64 -72, 50 -94" stroke="#fff" stroke-width="2.2" fill="none" filter="url(#steamBlur)" opacity="0.7"/>
+    <path d="M 78 -30 C 64 -54, 112 -70, 96 -90" stroke="#fff" stroke-width="2" fill="none" filter="url(#steamBlur)" opacity="0.6"/>
+  </g>
+
+  <!-- Handwritten title -->
+  <g filter="url(#inkBleed)">
+    <text x="130" y="180" class="hanTitle" font-size="44" fill="#fffdf7" opacity="0.96">不离日用常行内，直到先天未画前</text>
+  </g>
+
+  <!-- Gentle caption -->
+  <g opacity="0.8">
+    <text x="140" y="220" class="hanSub" font-size="18" fill="#f1f5f9">在每一呼吸与举止中回到本真，
+      <tspan dx="6">让心如水，万象自明。</tspan>
+    </text>
+  </g>
+
+  <!-- Small seal-like mark -->
+  <g transform="translate(1040,680)">
+    <rect x="0" y="0" width="68" height="68" fill="#fff1f2" opacity="0.12"/>
+    <rect x="6" y="6" width="56" height="56" fill="none" stroke="#fecaca" stroke-width="1.2"/>
+    <text x="34" y="42" text-anchor="middle" class="hanSub" font-size="16" fill="#fecaca">常行</text>
+  </g>
+
+  <!-- Foreground ground shadow -->
+  <ellipse cx="600" cy="720" rx="420" ry="40" fill="#0b0f1a" opacity="0.2"/>
+</svg>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1280" height="800" viewBox="0 0 1280 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fafaf9"/>
+      <stop offset="100%" stop-color="#e5e7eb"/>
+    </linearGradient>
+    <linearGradient id="inkGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#111827" stop-opacity="0.6"/>
+    </linearGradient>
+    <style><![CDATA[
+      .title { font-family: 'STKaiti', 'KaiTi', 'Noto Serif SC', 'Songti SC', serif; fill: #0f172a; font-weight: 600; }
+      .caption { font-family: 'LXGW WenKai', 'KaiTi', 'STKaiti', serif; fill: #334155; font-size: 16px; }
+      .label { font-family: 'Noto Sans CJK SC','PingFang SC','Microsoft YaHei', sans-serif; fill: #475569; font-size: 14px; }
+    ]]></style>
+  </defs>
+
+  <!-- Background -->
+  <rect x="0" y="0" width="1280" height="800" fill="url(#bgGrad)"/>
+
+  <!-- Title -->
+  <text x="640" y="80" text-anchor="middle" font-size="34" class="title">不离日用常行内，直到先天未画前</text>
+
+  <!-- Central circle (ink ring) -->
+  <circle cx="640" cy="420" r="160" fill="none" stroke="url(#inkGrad)" stroke-width="12" stroke-dasharray="970 150" stroke-linecap="round"/>
+  <text x="640" y="415" text-anchor="middle" class="title" font-size="22">先天</text>
+  <text x="640" y="445" text-anchor="middle" class="caption" fill="#475569">未画前</text>
+
+  <!-- Simple icons with labels -->
+  <!-- Eating/Tea -->
+  <g transform="translate(350,240)">
+    <rect x="-50" y="-50" width="100" height="100" rx="16" fill="none" stroke="#cbd5e1" stroke-width="1.5"/>
+    <path d="M -18 0 a 28 10 0 1 0 56 0 a 28 10 0 1 0 -56 0" fill="none" stroke="#475569" stroke-width="2"/>
+    <line x1="-10" y1="-20" x2="24" y2="-20" stroke="#f97316" stroke-width="4"/>
+    <line x1="-10" y1="-14" x2="24" y2="-14" stroke="#f97316" stroke-width="4"/>
+    <text x="0" y="70" text-anchor="middle" class="label">吃饭饮茶</text>
+  </g>
+
+  <!-- Walking -->
+  <g transform="translate(250,520)">
+    <rect x="-50" y="-50" width="100" height="100" rx="16" fill="none" stroke="#cbd5e1" stroke-width="1.5"/>
+    <path d="M -20 10 l 20 -30 l 20 30" fill="none" stroke="#475569" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="0" cy="0" r="6" fill="#475569"/>
+    <text x="0" y="70" text-anchor="middle" class="label">行走坐卧</text>
+  </g>
+
+  <!-- Working -->
+  <g transform="translate(930,240)">
+    <rect x="-50" y="-50" width="100" height="100" rx="16" fill="none" stroke="#cbd5e1" stroke-width="1.5"/>
+    <rect x="-28" y="-22" width="56" height="32" rx="4" fill="#334155"/>
+    <rect x="-36" y="14" width="72" height="8" rx="3" fill="#475569"/>
+    <text x="0" y="70" text-anchor="middle" class="label">工作事务</text>
+  </g>
+
+  <!-- Dialogue -->
+  <g transform="translate(1030,520)">
+    <rect x="-50" y="-50" width="100" height="100" rx="16" fill="none" stroke="#cbd5e1" stroke-width="1.5"/>
+    <path d="M -30 -10 h 60 a 4 4 0 0 1 4 4 v 26 a 4 4 0 0 1 -4 4 h -22 l -12 12 l -12 -12 h -14 a 4 4 0 0 1 -4 -4 v -26 a 4 4 0 0 1 4 -4 z" fill="none" stroke="#475569" stroke-width="2"/>
+    <text x="0" y="70" text-anchor="middle" class="label">言语交流</text>
+  </g>
+
+  <!-- Arrows toward center -->
+  <g stroke="#6b7280" stroke-width="1.8" marker-end="url(#arrowhead)">
+    <!-- define marker -->
+    <defs>
+      <marker id="arrowhead" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#6b7280"/>
+      </marker>
+    </defs>
+    <path d="M 400 240 L 560 360"/>
+    <path d="M 300 520 L 560 470"/>
+    <path d="M 880 240 L 720 360"/>
+    <path d="M 980 520 L 720 470"/>
+  </g>
+
+  <!-- Caption -->
+  <text x="640" y="760" text-anchor="middle" class="caption">以四类日常觉察为径，步步观返，归于本真</text>
+</svg>

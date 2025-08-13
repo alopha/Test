@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1280" height="800" viewBox="0 0 1280 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Paper texture -->
+    <filter id="paperTexture" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" seed="12" result="noise"/>
+      <feDiffuseLighting in="noise" lighting-color="#e5e5e5" surfaceScale="1.5">
+        <feDistantLight azimuth="45" elevation="30"/>
+      </feDiffuseLighting>
+      <feComposite in="SourceGraphic" in2="diffuse" operator="in"/>
+    </filter>
+
+    <!-- Water ripple effect -->
+    <filter id="ripple" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.01 0.04" numOctaves="2" seed="22" result="turb"/>
+      <feDisplacementMap in="SourceGraphic" in2="turb" scale="8" xChannelSelector="R" yChannelSelector="A"/>
+    </filter>
+
+    <!-- Watercolor blur -->
+    <filter id="watercolorBlur" x="-30%" y="-30%" width="160%" height="160%">
+        <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="alpha_blur"/>
+        <feTurbulence type="fractalNoise" baseFrequency="0.1" numOctaves="2" seed="45" result="turbulence"/>
+        <feDisplacementMap in="alpha_blur" in2="turbulence" scale="4" xChannelSelector="R" result="displaced_alpha"/>
+        <feFlood flood-color="#737373" result="color"/>
+        <feComposite in="color" in2="displaced_alpha" operator="in" result="displaced_color"/>
+        <feMerge>
+            <feMergeNode in="displaced_color"/>
+            <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+    </filter>
+
+    <linearGradient id="waterGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#bfdbfe" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#dbeafe" stop-opacity="0.9"/>
+    </linearGradient>
+
+    <style><![CDATA[
+      .title { font-family: 'STSong', 'Songti SC', 'Noto Serif SC', serif; fill: #171717; font-weight: 500; }
+      .label { font-family: 'LXGW WenKai', 'STKaiti', 'Kaiti SC', serif; fill: #525252; font-size: 14px; }
+    ]]></style>
+  </defs>
+
+  <!-- Background -->
+  <rect x="0" y="0" width="1280" height="800" fill="#f5f5f4"/>
+  <rect x="0" y="0" width="1280" height="800" fill="#ffffff" opacity="0.6" filter="url(#paperTexture)"/>
+
+  <!-- Main Title -->
+  <text x="640" y="90" text-anchor="middle" class="title" font-size="32">不离日用常行内，直到先天未画前</text>
+
+  <!-- Central water body representing "先天" -->
+  <g transform="translate(0, 50)">
+    <path d="M 120 400 C 200 280, 400 250, 640 260 C 900 270, 1100 300, 1160 420 C 1200 550, 1000 650, 640 640 C 300 630, 80 550, 120 400 Z"
+          fill="url(#waterGrad)" stroke="#a3a3a3" stroke-width="0.5" filter="url(#ripple)"/>
+
+    <!-- Subtle elements representing "日用" integrated into the water -->
+    <g opacity="0.8" filter="url(#watercolorBlur)">
+      <!-- Tea leaf (Eating) -->
+      <path d="M 320 380 C 330 370, 345 375, 350 385 C 355 395, 340 405, 330 400 Z" fill="#4d7c0f"/>
+      <text x="320" y="425" class="label">饭茶</text>
+
+      <!-- Stepping stones (Walking) -->
+      <g>
+        <ellipse cx="500" cy="540" rx="28" ry="16" fill="#78716c"/>
+        <ellipse cx="560" cy="500" rx="26" ry="15" fill="#a8a29e"/>
+        <ellipse cx="620" cy="460" rx="24" ry="14" fill="#d6d3d1"/>
+        <text x="560" y="570" class="label">步履</text>
+      </g>
+
+      <!-- Geometric reflection (Work) -->
+      <g>
+        <path d="M 900 340 L 960 350 L 950 410 L 890 400 Z" fill="#0ea5e9" opacity="0.25"/>
+        <line x1="900" y1="340" x2="950" y2="410" stroke="#0ea5e9" stroke-width="0.7" opacity="0.4"/>
+        <line x1="960" y1="350" x2="890" y2="400" stroke="#0ea5e9" stroke-width="0.7" opacity="0.4"/>
+        <text x="920" y="440" class="label">事务</text>
+      </g>
+
+      <!-- Speech ripples (Dialogue) -->
+      <g>
+        <circle cx="800" cy="550" r="10" stroke="#f43f5e" stroke-width="1" fill="none"/>
+        <circle cx="800" cy="550" r="20" stroke="#f43f5e" stroke-width="1" stroke-opacity="0.6" fill="none"/>
+        <circle cx="800" cy="550" r="30" stroke="#f43f5e" stroke-width="1" stroke-opacity="0.3" fill="none"/>
+        <text x="800" y="610" text-anchor="middle" class="label">言语</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Caption -->
+  <text x="640" y="750" text-anchor="middle" class="label" font-size="16">
+    于日常波澜中，照见静水深流
+  </text>
+</svg>

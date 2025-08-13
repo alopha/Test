@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <radialGradient id="coreGrad" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="70%" stop-color="#e5e7eb" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#d1d5db" stop-opacity="0.85"/>
+    </radialGradient>
+    <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9ca3af"/>
+    </marker>
+
+    <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000000" flood-opacity="0.25"/>
+    </filter>
+
+    <style><![CDATA[
+      .title { font-family: 'Noto Sans CJK SC', 'PingFang SC', 'Microsoft YaHei', 'Heiti SC', sans-serif; fill: #e5e7eb; font-weight: 600; }
+      .subtitle { font-family: 'Noto Sans CJK SC', 'PingFang SC', 'Microsoft YaHei', 'Heiti SC', sans-serif; fill: #cbd5e1; }
+      .label { font-family: 'Noto Sans CJK SC', 'PingFang SC', 'Microsoft YaHei', 'Heiti SC', sans-serif; fill: #e5e7eb; font-size: 16px; }
+      .small { font-size: 14px; fill: #cbd5e1; }
+      .nodeText { font-family: 'Noto Sans CJK SC', 'PingFang SC', 'Microsoft YaHei', 'Heiti SC', sans-serif; fill: #111827; font-size: 16px; }
+    ]]></style>
+  </defs>
+
+  <!-- Background -->
+  <rect x="0" y="0" width="1200" height="800" fill="url(#bgGrad)"/>
+
+  <!-- Header -->
+  <text x="600" y="64" text-anchor="middle" class="title" font-size="28">不离日用常行内，直到先天未画前</text>
+  <text x="600" y="96" text-anchor="middle" class="subtitle" font-size="16">在日常行为中修持与观照，回到未分化的本真处</text>
+
+  <!-- Outer meaning ring: “不离日用常行内” -->
+  <g>
+    <circle cx="600" cy="420" r="300" fill="none" stroke="url(#ringGrad)" stroke-width="3" stroke-dasharray="8 10"/>
+    <text x="600" y="120" text-anchor="middle" class="label">不离·日用·常行</text>
+  </g>
+
+  <!-- Daily life nodes (left column) -->
+  <g>
+    <g filter="url(#softShadow)">
+      <rect x="160" y="200" rx="12" ry="12" width="180" height="48" fill="#fef3c7"/>
+      <text x="250" y="230" text-anchor="middle" class="nodeText">吃饭饮茶</text>
+    </g>
+    <g filter="url(#softShadow)">
+      <rect x="140" y="270" rx="12" ry="12" width="200" height="48" fill="#e0f2fe"/>
+      <text x="240" y="300" text-anchor="middle" class="nodeText">行走坐卧</text>
+    </g>
+    <g filter="url(#softShadow)">
+      <rect x="120" y="340" rx="12" ry="12" width="220" height="48" fill="#dcfce7"/>
+      <text x="230" y="370" text-anchor="middle" class="nodeText">言语应对</text>
+    </g>
+    <g filter="url(#softShadow)">
+      <rect x="140" y="410" rx="12" ry="12" width="200" height="48" fill="#e9d5ff"/>
+      <text x="240" y="440" text-anchor="middle" class="nodeText">工作事务</text>
+    </g>
+    <g filter="url(#softShadow)">
+      <rect x="160" y="480" rx="12" ry="12" width="180" height="48" fill="#fee2e2"/>
+      <text x="250" y="510" text-anchor="middle" class="nodeText">亲友相处</text>
+    </g>
+  </g>
+
+  <!-- Arrows from daily nodes to practice ring -->
+  <g stroke="#9ca3af" stroke-width="1.5" fill="none" marker-end="url(#arrow)">
+    <path d="M 340 224 C 420 224, 480 260, 540 320"/>
+    <path d="M 340 294 C 430 300, 500 340, 540 360"/>
+    <path d="M 340 364 C 440 380, 510 395, 540 400"/>
+    <path d="M 340 434 C 430 440, 500 460, 540 460"/>
+    <path d="M 340 504 C 430 510, 500 520, 540 520"/>
+  </g>
+
+  <!-- Practice loop around the core -->
+  <g>
+    <circle cx="600" cy="420" r="200" fill="none" stroke="#93c5fd" stroke-width="2" stroke-dasharray="4 6"/>
+    <path d="M 600 220 A 200 200 0 1 1 599.9 220" fill="none" stroke="#a7f3d0" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="600" y="210" text-anchor="middle" class="small">观 → 照 → 返 → 合</text>
+    <text x="820" y="420" class="small">观：如实看见</text>
+    <text x="820" y="450" class="small">照：当下照拂</text>
+    <text x="820" y="480" class="small">返：念念归根</text>
+    <text x="820" y="510" class="small">合：人法一体</text>
+  </g>
+
+  <!-- Core: “先天未画前” -->
+  <g>
+    <circle cx="600" cy="420" r="112" fill="url(#coreGrad)" stroke="#94a3b8" stroke-width="1.5"/>
+    <circle cx="600" cy="420" r="8" fill="#111827" opacity="0.7"/>
+    <text x="600" y="410" text-anchor="middle" class="title" font-size="22" fill="#0f172a">先天</text>
+    <text x="600" y="442" text-anchor="middle" class="subtitle" font-size="16" fill="#334155">未画前 · 本真</text>
+  </g>
+
+  <!-- Right-side hints: qualities emerging from practice -->
+  <g>
+    <g filter="url(#softShadow)">
+      <rect x="920" y="260" rx="10" ry="10" width="180" height="44" fill="#f0f9ff"/>
+      <text x="1010" y="288" text-anchor="middle" class="nodeText">平常心 · 无分别</text>
+    </g>
+    <g filter="url(#softShadow)">
+      <rect x="940" y="320" rx="10" ry="10" width="160" height="44" fill="#ecfccb"/>
+      <text x="1020" y="348" text-anchor="middle" class="nodeText">清明 · 安住</text>
+    </g>
+    <g filter="url(#softShadow)">
+      <rect x="940" y="380" rx="10" ry="10" width="160" height="44" fill="#fff7ed"/>
+      <text x="1020" y="408" text-anchor="middle" class="nodeText">不增不减</text>
+    </g>
+    <g filter="url(#softShadow)">
+      <rect x="920" y="440" rx="10" ry="10" width="180" height="44" fill="#fef2f2"/>
+      <text x="1010" y="468" text-anchor="middle" class="nodeText">随缘 · 不执着</text>
+    </g>
+  </g>
+
+  <!-- Caption -->
+  <text x="600" y="760" text-anchor="middle" class="small" fill="#94a3b8">意旨：不离当下日用而修，念念观照而返根，直至本然未分化之处</text>
+</svg>
